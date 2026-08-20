@@ -1,0 +1,49 @@
+# Environment & Local Configuration
+.env
+.env.local
+.env.*.local
+*.env
+
+# Build outputs
+dist/
+build/
+bin/
+out/
+*.exe
+*.exe.stackdump
+*.so
+*.dylib
+*.dll
+
+# Go
+backend/bin/
+backend/coverage.out
+backend/coverage.html
+*.out
+
+# Node / Frontend
+node_modules/
+.npm/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+frontend/dist/
+frontend/node_modules/
+
+# AI Agent Tasks & Rules
+ai-agent-project-tasks/
+AGENTS.md
+
+# IDE & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary / Scratch / Logs
+scratch/
+tmp/
+*.log

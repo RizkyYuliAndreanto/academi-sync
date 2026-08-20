@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --bg: #ffffff; --fg: #111827 }
+html,body,#root { height:100%; margin:0; font-family: Inter, ui-sans-serif, system-ui; background:var(--bg); color:var(--fg) }
