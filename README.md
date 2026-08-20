@@ -19,18 +19,16 @@ Platform Bimbingan Skripsi/Tugas Akhir Online Real-Time (WebRTC, PDF Synchroniza
 ## Quick Start (Development)
 
 ### Backend
+
 ```bash
 cd backend
 go run ./cmd/server
 ```
 
 ### Frontend
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-
-## Governance & Architecture
-
-Detailed task specifications and checklist progress can be found in [`ai-agent-project-tasks/MASTER_CHECKLIST.md`](ai-agent-project-tasks/MASTER_CHECKLIST.md).
