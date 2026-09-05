@@ -11,7 +11,7 @@
 [![MinIO](https://img.shields.io/badge/Storage-MinIO-C72E49?style=flat-square&logo=minio&logoColor=white)](https://min.io)
 [![WebRTC](https://img.shields.io/badge/Video-WebRTC-333333?style=flat-square&logo=webrtc&logoColor=white)](https://webrtc.org)
 
-*Video call · Sinkronisasi PDF · Anotasi live · Manajemen sesi*
+_Video call · Sinkronisasi PDF · Anotasi live · Manajemen sesi_
 
 </div>
 
@@ -19,15 +19,15 @@
 
 ## ✨ Fitur
 
-| | Fitur | Deskripsi |
-|---|---|---|
-| 🎥 | **Video Call WebRTC** | Konferensi 1-on-1 mahasiswa ↔ dosen dengan TURN (coturn) untuk traversal NAT |
-| 📄 | **Sinkronisasi PDF** | Dokumen aktif & halaman aktif dikendalikan server — scroll dosen, ikut mahasiswa |
-| ✏️ | **Anotasi Live** | Gambar & catatan di atas PDF (Konva.js), koordinat *normalized* agar tampil sama di semua layar |
-| 🔌 | **Real-Time Signaling** | WebSocket dengan satu writer goroutine per koneksi dan bounded queue |
-| 📁 | **Manajemen Dokumen** | Upload PDF ke MinIO (bucket private, akses via presigned URL) |
-| 🔐 | **Auth & Session** | JWT via HttpOnly cookie — tidak pernah disimpan di Local Storage |
-| 📋 | **Manajemen Sesi** | Jadwal bimbingan, riwayat, dan status sesi per mahasiswa |
+|     | Fitur                   | Deskripsi                                                                                       |
+| --- | ----------------------- | ----------------------------------------------------------------------------------------------- |
+| 🎥  | **Video Call WebRTC**   | Konferensi 1-on-1 mahasiswa ↔ dosen dengan TURN (coturn) untuk traversal NAT                    |
+| 📄  | **Sinkronisasi PDF**    | Dokumen aktif & halaman aktif dikendalikan server — scroll dosen, ikut mahasiswa                |
+| ✏️  | **Anotasi Live**        | Gambar & catatan di atas PDF (Konva.js), koordinat _normalized_ agar tampil sama di semua layar |
+| 🔌  | **Real-Time Signaling** | WebSocket dengan satu writer goroutine per koneksi dan bounded queue                            |
+| 📁  | **Manajemen Dokumen**   | Upload PDF ke MinIO (bucket private, akses via presigned URL)                                   |
+| 🔐  | **Auth & Session**      | JWT via HttpOnly cookie — tidak pernah disimpan di Local Storage                                |
+| 📋  | **Manajemen Sesi**      | Jadwal bimbingan, riwayat, dan status sesi per mahasiswa                                        |
 
 ## 🏗️ Arsitektur
 
@@ -46,7 +46,7 @@
                       └───────────────┘
 ```
 
-**Prinsip utama:** server *authoritative*. Klien tidak pernah dipercaya untuk `sender_id`, role, ownership, page count, atau permission — semuanya divalidasi dan diurutkan oleh server.
+**Prinsip utama:** server _authoritative_. Klien tidak pernah dipercaya untuk `sender_id`, role, ownership, page count, atau permission — semuanya divalidasi dan diurutkan oleh server.
 
 ## 📂 Struktur Proyek
 
@@ -86,19 +86,19 @@ npm install
 npm run dev                  # → http://localhost:5173
 ```
 
-Database dan storage *diaktifkan bertahap* lewat flag di `.env`
+Database dan storage _diaktifkan bertahap_ lewat flag di `.env`
 (`DATABASE_ENABLED`, `STORAGE_ENABLED`, `TURN_ENABLED`) sesuai fase task yang sedang dikerjakan.
 
 ## ⚙️ Konfigurasi Utama
 
-| Variabel | Default | Keterangan |
-|---|---|---|
-| `HTTP_PORT` | `8080` | Port API backend |
-| `HTTP_ALLOWED_ORIGINS` | `http://localhost:5173` | CORS origin (pisah dengan koma) |
-| `DATABASE_ENABLED` | `false` | Aktifkan koneksi PostgreSQL (pgxpool) |
-| `DATABASE_URL` | — | DSN PostgreSQL |
-| `STORAGE_ENABLED` | `false` | Aktifkan MinIO untuk dokumen PDF |
-| `TURN_ENABLED` | `false` | Aktifkan TURN untuk WebRTC lintas jaringan |
+| Variabel               | Default                 | Keterangan                                 |
+| ---------------------- | ----------------------- | ------------------------------------------ |
+| `HTTP_PORT`            | `8080`                  | Port API backend                           |
+| `HTTP_ALLOWED_ORIGINS` | `http://localhost:5173` | CORS origin (pisah dengan koma)            |
+| `DATABASE_ENABLED`     | `false`                 | Aktifkan koneksi PostgreSQL (pgxpool)      |
+| `DATABASE_URL`         | —                       | DSN PostgreSQL                             |
+| `STORAGE_ENABLED`      | `false`                 | Aktifkan MinIO untuk dokumen PDF           |
+| `TURN_ENABLED`         | `false`                 | Aktifkan TURN untuk WebRTC lintas jaringan |
 
 Lengkap di [`.env.example`](.env.example) — log, timeout HTTP, dan kebijakan cookie juga bisa diatur di sana.
 
@@ -124,15 +124,8 @@ Aturan yang tidak boleh dilanggar (detail di [`AGENTS.md`](AGENTS.md)):
 - Server authoritative untuk identity, permission, room state, dan sequence
 - JWT/session **tidak pernah** di Local Storage — selalu HttpOnly cookie
 - Bucket MinIO private; presigned URL bersifat sementara, bukan identitas
-- Anotasi memakai koordinat *normalized*, bukan pixel
+- Anotasi memakai koordinat _normalized_, bukan pixel
 - Tidak ada secret (password, token, SDP penuh, TURN credential) di log
-
-## 🤝 Kontribusi
-
-1. Baca [`AGENTS.md`](AGENTS.md) dan task spesifikasi yang relevan
-2. Satu task per perubahan — jangan perluas scope
-3. Jalankan test + lint, isi evidence, tandai `REVIEW`
-4. Verifier terpisah yang menentukan `DONE`
 
 ---
 
