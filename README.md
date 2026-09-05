@@ -102,31 +102,6 @@ Database dan storage _diaktifkan bertahap_ lewat flag di `.env`
 
 Lengkap di [`.env.example`](.env.example) — log, timeout HTTP, dan kebijakan cookie juga bisa diatur di sana.
 
-## 🗺️ Roadmap
-
-Proyek dikerjakan per fase, dengan spesifikasi lengkap di [`ai-agent-project-tasks/`](ai-agent-project-tasks/):
-
-- [ ] **01 — Foundation**: konfigurasi, logging, health check
-- [ ] **02 — Auth**: registrasi/login, JWT cookie, middleware role
-- [ ] **03 — Sessions**: manajemen sesi bimbingan
-- [ ] **04 — WebSocket**: koneksi real-time & room state
-- [ ] **05 — WebRTC**: signaling, TURN (coturn), uji lintas jaringan
-- [ ] **06 — Documents**: upload PDF, MinIO, presigned URL
-- [ ] **07 — Sync & Annotations**: sinkron halaman + anotasi live
-- [ ] **08 — Security**: security gates & audit
-- [ ] **09 — Ops**: deployment & observability
-- [ ] **10 — Testing & Release**: E2E, contract test, rilis
-
-## 🛡️ Invariant Keamanan
-
-Aturan yang tidak boleh dilanggar (detail di [`AGENTS.md`](AGENTS.md)):
-
-- Server authoritative untuk identity, permission, room state, dan sequence
-- JWT/session **tidak pernah** di Local Storage — selalu HttpOnly cookie
-- Bucket MinIO private; presigned URL bersifat sementara, bukan identitas
-- Anotasi memakai koordinat _normalized_, bukan pixel
-- Tidak ada secret (password, token, SDP penuh, TURN credential) di log
-
 ---
 
 <div align="center">
